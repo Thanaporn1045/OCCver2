@@ -37,6 +37,19 @@
   height: auto;
   display: block;
 }
+.logo {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  /* width: 100%; */
+  height: auto;
+  z-index: 1; 
+}
+.logo img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 #Texticon, #Drawicon {
   width: 15%; 
   padding: 2%;
@@ -44,10 +57,10 @@
 
 #menubar {
   position: fixed;
-  top: 10%;
+  top: 15%;
   left: 0;
   width: 100%;
-  transform: translateY(-10%);
+  transform: translateY(-15%);
 }
 
 #logo {
@@ -59,6 +72,7 @@
 }
 
 .Text_Container {
+  z-index: 2;
   width: 80%;
   position: fixed;
   top: 50%;
@@ -129,7 +143,22 @@
 .Draw_Zone{
   display: none;
 }
-
+.drawName {
+  z-index: 2;
+  /* width: 100%; */
+  position: fixed;
+  top: 70vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#drawtext {
+  width: 50%;
+  /* text-align: center; */
+  font-size: 2vh;
+  padding: 8px; 
+  border-radius : 20px; 
+  border: none;
+}
 
 
 
