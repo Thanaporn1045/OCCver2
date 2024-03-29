@@ -129,7 +129,7 @@
 
     <a id="testText1" style="position: absolute; top: 0; display: none">x,y</a>
     <a id="testText2" style="position: absolute; top: 20px; display: none">x,y</a>
-    <a id="testText3" style="position: absolute; top: 40px; display: none">x,y</a>
+    <a id="testText3" style="position: absolute; top: 50px; display: none">x,y</a>
 
     <a id="link"></a>
   <div class="drawName">
@@ -138,10 +138,53 @@
   </div>
     <div class="drawing-container">
       <canvas id="canvas" ></canvas>
-      
+      <div class="tools-container">
+        <div class="tools-content">
+          <div class="tool active-tool" id="pen">
+            <img src="./NewIcons/pen-clip-svgrepo-com.svg" alt="" />
+            <div class="tool-options hide">
+              <div class="pen-size">
+                <input type="range" id="pensize" value="10" min="5" max="40" />
+              </div>
+              <div class="pen-colors">
+                <div class="black"></div>
+                <div class="purple"></div>
+                <div class="blue"></div>
+                <div class="green"></div>
+                <div class="red"></div>
+              </div>
+            </div>
+          </div>
+          <div class="tool fade" id="eraser">
+            <img src="./NewIcons/eraser-svgrepo-com.svg" alt="" />
+            <div class="tool-options2 hide">
+              <div class="eraser-size">
+                <input
+                  type="range"
+                  id="erasersize"
+                  value="25"
+                  min="10"
+                  max="40"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="tool fade tap" id="clear">
+            <img src="./NewIcons/bin-delete-recycle-svgrepo-com.svg" alt="" />
+          </div>
+          <div class="tool" id="undo">
+            <img src="./NewIcons/undo-left-round-svgrepo-com.svg" alt="" />
+          </div>
+          <div class="tool" id="redo">
+            <img src="./NewIcons/undo-right-round-svgrepo-com.svg" alt="" />
+          </div>
+        
+        
+        </div> 
+      </div>
     </div>
     <div class="container">
-    <div class="tools-container">
+    <!-- <div class="tools-container">
       <div class="tools-content">
         <div class="tool active-tool" id="pen">
           <img src="./NewIcons/pen-clip-svgrepo-com.svg" alt="" />
@@ -181,17 +224,19 @@
         <div class="tool" id="redo">
           <img src="./NewIcons/undo-right-round-svgrepo-com.svg" alt="" />
         </div>
-      </div>
-      <div class="send2">
+      
+      
+      </div> 
+    </div> -->
+
+
+    <div class="send2">
         <button id="summitme2">
           <img id="send" src="./picture/send.png" alt="Submit"/>
-        </button> 
-      </div> 
-      <div class="mountain">
+        </button> </div>
+     <div class="mountain">
       <img src="./picture/mountain2.png" alt="" /></div>
     </div>
-    </div>
-    
 </div>
 
 <!----------------------------------------------------------------------- script---------------------------------------------------------------->

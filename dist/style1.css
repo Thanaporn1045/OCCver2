@@ -30,7 +30,7 @@
   width: 100%;
   height: auto;
   bottom: 0;
-  z-index: 1; /* ปรับ z-index ตามต้องการ */
+  z-index: 1; 
 }
 .mountain img {
   max-width: 100%;
@@ -61,6 +61,7 @@
   left: 0;
   width: 100%;
   transform: translateY(-15%);
+  z-index: 4;
 }
 
 #logo {
@@ -113,8 +114,8 @@
   position: absolute;
   width: 100%;
   height: auto; 
-  bottom: 5%; 
-  z-index: 2;
+  bottom: 10%; 
+  z-index: 3;
 }
 #summitme{
   background-color: transparent;
@@ -132,6 +133,7 @@
   border: none;
   width: 20%;
   height: 4%; ;
+  /* z-index: 2; */
   
 }
 #summitme2 img {
@@ -141,23 +143,8 @@
 
 
 .Draw_Zone{
-  display: none;
-}
-.drawName {
-  z-index: 2;
-  /* width: 100%; */
-  position: fixed;
-  top: 70vh;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-#drawtext {
-  width: 50%;
-  /* text-align: center; */
-  font-size: 2vh;
-  padding: 8px; 
-  border-radius : 20px; 
-  border: none;
+   display: none; 
+  
 }
 
 
@@ -177,11 +164,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 3;
   }
   
   @media only screen and (orientation: landscape) {
     .tools-container {
       height: 15vh;
+      z-index: 3;
     }
   }
   
@@ -252,10 +241,13 @@
     align-items: center;
     width: 100vw;
     height: 90vh; 
+   
   
   }
   
   #canvas {
+    top: 30%;
+    z-index: 2; 
     border : 1px solid white;
     border-radius: 10px;
     padding: 20px ;
@@ -263,10 +255,11 @@
   }
   .drawName{
     display: flex;
+    z-index: 3;
     justify-content: center;
     position: absolute;
     width: 100%;
-    top: 15%;
+    top:25vh;
   }
   #drawtext{
     text-align: center;
