@@ -437,4 +437,31 @@
     height: 100%;
     background: #111111;
   }
+   /* ----------------------------------------------------popup คำหยาบ-------------------------------------------------------- */
+ 
+
+  /* ----------------------------------------------------popup ไม่กรอกข้อมูล-------------------------------------------------------- */
   
+   
+  
+  
+  .popup-container {
+    z-index: 1000;
+    width: 80%;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%);
+    display: none;
+    width: 340px;
+    padding: 1em;
+    color: black;
+    background: #fff ;
+  }
+  
+  .popup-confirm-button {
+    z-index: 10001; /* กำหนด z-index ให้สูงกว่า Popup container */
+    background-color: #ffc800d0;
+  }
+
+
+

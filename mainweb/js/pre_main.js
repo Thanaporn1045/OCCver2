@@ -60,7 +60,7 @@ for (let i = 0; i < slangWords.length; i++) {
       Swal.fire({
       icon: 'error',
       title: 'OH NO!',
-      html:'<div style="color:white" class="popup">You just got censored for no reason</div>',
+      html:'<div z-index: 9999 class="popup">You just got censored for no reason</div>',
       width: 340,
       padding: '1em',
       color: 'black',
@@ -111,30 +111,20 @@ const db = getFirestore();
       console.error("Error adding document: ", e)
     }
   }
-
   document.getElementById('summitme').onclick = function(){
-
     const myname = document.getElementById('nametext').value;
     const mymsg = document.getElementById('humantext').value;
 
     if(mymsg=='' || mymsg.trim()=='' ||mymsg==null || mymsg==undefined ||myname=='' ||  myname.trim()=='' || myname==null ||  myname==undefined){
-      Swal.fire({
-        icon: 'info',
-        title: 'Ah..!',
-        html:'<div style="color:white" class="popup">please type something, no blank</div>',
-        width: 340,
-        padding: '1em',
-        color: 'black',
-        background: '#fff url(asset/clickbg.jpg)',
-        confirmButtonColor: '#ffc800d0',
-        confirmButtonText:'OK',
-      })
-
+        document.getElementById('popup').style.display = 'block';
     } else {
-      addMessage(mymsg,myname);
-    }
-  }
+        addMessage(mymsg,myname);
+    }}
+  document.getElementById('popup-confirm-button').onclick = function(){document.getElementById('popup').style.display = 'none';}
   
+
+
+
   async function adddrawname(drawname) {
     const datenow = Date.now();
     try {
@@ -148,20 +138,15 @@ const db = getFirestore();
       console.error("Error adding document: ", e)
     }
   }
-  
-  document.getElementById('summitme2').onclick = function () {
-    const drawname = document.getElementById('drawtext').value;
+  document.getElementById('summitme2').onclick = function(){
+    const myname = document.getElementById('drawtext').value;
     
-    if ( drawname== '' || drawname.trim() == '' || drawname == null || drawname == undefined ) {
-      Swal.fire({
-        icon: 'info',
-          title: 'Ah..!',
-          html: document.getElementById('popup').innerHTML,
-          confirmButtonClass: 'popup-confirm-button',
-          confirmButtonText: 'OK',
-      })
+
+    if(mymsg=='' || mymsg.trim()=='' ||mymsg==null || mymsg==undefined ||myname=='' ||  myname.trim()=='' || myname==null ||  myname==undefined){
+        document.getElementById('popup').style.display = 'block';
     } else {
-      adddrawname(drawname);
-    }
-  }
+        addMessage(drawname);
+    }}
+  document.getElementById('popup-confirm-button').onclick = function(){document.getElementById('popup').style.display = 'none';}
+  
   

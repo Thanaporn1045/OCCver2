@@ -82,19 +82,20 @@
 
   <body>
     <!-- test -->
+   
     <div class="logo"><img src="picture/logo.png"></div> 
     <div id="main"> 
-      
+
       <div id="menubar">
         <img id="Texticon" src="act/Tact.png" onclick="TextPage()">
         <img id="Drawicon" src="non/D.png" onclick="DrawPage()">
       </div>
     </div>
-    <!-- <div id="menubar">
-      <button id="TextButton" onclick="TextPage()">Text</button>
-      <button id="DrawButton" onclick="DrawPage()">Draw</button>
-    </div> -->
-    
+    <div id="popup" class="popup-container" >
+      <div class="popup">please type something, no blank</div>
+      <button id="popup-confirm-button" class="popup-confirm-button">OK</button>
+    </div>
+
 
     <!----------------------------------------------------------------------- Text Zone ---------------------------------------------------------------->
     <div class="Text_Zone"> 
@@ -238,6 +239,7 @@
       <img src="./picture/mountain2.png" alt="" /></div>
     </div>
 </div>
+<!----------------------------------------------------------------------- popup ข้อมูลว่าง---------------------------------------------------------------->
 
 <!----------------------------------------------------------------------- script---------------------------------------------------------------->
 
