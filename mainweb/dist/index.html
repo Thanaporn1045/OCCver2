@@ -29,7 +29,6 @@
 
     <script>
       let sendState = false;
-
       const firebaseConfig = {
       apiKey: "AIzaSyA1oa_0wH24tHXoyBroWFgcy-wvL6E7jZA",
       authDomain: "human-error-ex.firebaseapp.com",
@@ -91,13 +90,35 @@
         <img id="Drawicon" src="non/D.png" onclick="DrawPage()">
       </div>
     </div>
+
+
+<!----------------------------------------------------------------------- popup ข้อมูลว่าง---------------------------------------------------------------->
+  
     <div id="popup" class="popup-container" >
-      <div class="popup">please type something, no blank</div>
-      <button id="popup-confirm-button" class="popup-confirm-button">OK</button>
+      <div class="error-Container">
+        <h3>Ah..!</h3>
+        <p>please type something</p>
+        <div class="ok">
+          <button id="popup-confirm-button" >OK</button>
+        </div>
+      </div>
     </div>
 
 
-    <!----------------------------------------------------------------------- Text Zone ---------------------------------------------------------------->
+<!----------------------------------------------------------------------- popup คำหยาบ--------------------------------------------------------------->
+
+    <div id="error" class="popup-container" >
+      <div class="error-Container">
+        <h3>OH NO!</h3>
+        <p >You just got censored for no reason</p>
+        <div class="Gotit">
+          <button id="popup-Gotit-button" >Got it</button>
+        </div>
+      </div>
+    </div>
+  
+
+<!----------------------------------------------------------------------- Text Zone ---------------------------------------------------------------->
     <div class="Text_Zone"> 
       <div class="Text_Container">
       <section id="textinput">
@@ -135,9 +156,10 @@
     <a id="link"></a>
   <div class="drawName">
     <input id="drawtext" type="text" class="css-input" placeholder=" Name?" maxlength="50">
-    <br>
+  <br>
   </div>
     <div class="drawing-container">
+      
       <canvas id="canvas" ></canvas>
       <div class="tools-container">
         <div class="tools-content">
@@ -179,8 +201,7 @@
           <div class="tool" id="redo">
             <img src="./NewIcons/undo-right-round-svgrepo-com.svg" alt="" />
           </div>
-        
-        
+
         </div> 
       </div>
     </div>
@@ -234,12 +255,22 @@
     <div class="send2">
         <button id="summitme2">
           <img id="send" src="./picture/send.png" alt="Submit"/>
-        </button> </div>
+        </button>
+        <div class="send2">
+          <button id="summitme3">/></button>
+        </div>
+      </div>
      <div class="mountain">
       <img src="./picture/mountain2.png" alt="" /></div>
     </div>
+    <br>
+  
+    <!-- <button class="summitme3" id="summitme3">send</button>  -->
 </div>
-<!----------------------------------------------------------------------- popup ข้อมูลว่าง---------------------------------------------------------------->
+
+<script>document.getElementById('summitme2').addEventListener('click', function() {
+  document.getElementById('summitme3').click(); });</script>
+
 
 <!----------------------------------------------------------------------- script---------------------------------------------------------------->
 

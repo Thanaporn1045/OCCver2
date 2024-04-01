@@ -5,6 +5,7 @@ import 'firebase/firestore';
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from 'firebase/firestore'
 import { doc, setDoc } from 'firebase/firestore'
+import { addDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: "AIzaSyA1oa_0wH24tHXoyBroWFgcy-wvL6E7jZA",
@@ -57,18 +58,9 @@ for (let i = 0; i < slangWords.length; i++) {
  
   if(e.target.value.includes(slangWords[i].toLowerCase())){
     document.querySelector("input").value=''
-      Swal.fire({
-      icon: 'error',
-      title: 'OH NO!',
-      html:'<div z-index: 9999 class="popup">You just got censored for no reason</div>',
-      width: 340,
-      padding: '1em',
-      color: 'black',
-      background: '#fff url(asset/clickbg.jpg)',
-      confirmButtonColor: 'red',
-      confirmButtonText:'Fu▇k it',
-    })
+    document.getElementById('error').style.display = 'block';
   }
+  document.getElementById('popup-Gotit-button').onclick = function(){document.getElementById('error').style.display = 'none';}
 }
   // if(slangWords.includes(e.target.value.toLowerCase())){
  
@@ -96,10 +88,10 @@ const analytics = getAnalytics(app);
 const db = getFirestore();
 
   async function addMessage(message,myname) {
-
+    
     const datenow = Date.now();
     try {
-      //const docRef = await addDoc(collection(db, "humanerror", datenow), {name: "myname" ,msg: "Ada", timestamp: datenow});
+      // const docRef = await addDoc(collection(db, "humanerror"), {name: "myname" ,msg: "Ada", timestamp: datenow});
       const setdoc = await setDoc(doc(db,"humanerror", datenow+''), {
         name: myname, msg: message, timestamp: datenow})
         .then(() => {
@@ -111,42 +103,15 @@ const db = getFirestore();
       console.error("Error adding document: ", e)
     }
   }
+  
   document.getElementById('summitme').onclick = function(){
     const myname = document.getElementById('nametext').value;
     const mymsg = document.getElementById('humantext').value;
+    
 
     if(mymsg=='' || mymsg.trim()=='' ||mymsg==null || mymsg==undefined ||myname=='' ||  myname.trim()=='' || myname==null ||  myname==undefined){
         document.getElementById('popup').style.display = 'block';
     } else {
         addMessage(mymsg,myname);
     }}
-  document.getElementById('popup-confirm-button').onclick = function(){document.getElementById('popup').style.display = 'none';}
-  
-
-
-
-  async function adddrawname(drawname) {
-    const datenow = Date.now();
-    try {
-      const docRef = await addDoc(collection(db, "Drawpage", datenow + ''), { name: "myname", timestamp: datenow });
-      const setdoc = await setDoc(doc(db, "Drawpage", datenow + ''), { name: drawname, timestamp: datenow })
-        .then(() => {
-          console.log("Successful")
-          window.location.href = "index1.html"
-        });
-    } catch (e) {
-      console.error("Error adding document: ", e)
-    }
-  }
-  document.getElementById('summitme2').onclick = function(){
-    const myname = document.getElementById('drawtext').value;
-    
-
-    if(mymsg=='' || mymsg.trim()=='' ||mymsg==null || mymsg==undefined ||myname=='' ||  myname.trim()=='' || myname==null ||  myname==undefined){
-        document.getElementById('popup').style.display = 'block';
-    } else {
-        addMessage(drawname);
-    }}
-  document.getElementById('popup-confirm-button').onclick = function(){document.getElementById('popup').style.display = 'none';}
-  
-  
+    document.getElementById('popup-confirm-button').onclick = function(){document.getElementById('popup').style.display = 'none';}

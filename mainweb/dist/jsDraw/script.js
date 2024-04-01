@@ -32,6 +32,32 @@ let redoLinesDB = [];
 let isPenDown = false;
 let line = [];
 
+// function initScreen() {
+//   widthLast = window.innerWidth;
+//   heightLast = window.innerHeight;
+
+//   canvasOffsetX = canvas.offsetLeft;
+//   canvasOffsetY = canvas.offsetTop;
+
+//   canvas.width = (window.innerWidth - canvasOffsetX) * ratioRes;
+//   canvas.height = (window.innerHeight - canvasOffsetY) * ratioRes;
+
+//   if (canvas.width < canvas.height) {
+//     canvas.height = canvas.width;
+//   } else {
+//     canvas.width = canvas.height;
+//   }
+
+//   canvas.style.width = "" + canvas.width / ratioRes + "px";
+//   canvas.style.height = "" + canvas.height / ratioRes + "px";
+
+//   ctx.beginPath();
+//   ctx.rect(0, 0, canvas.width, canvas.height);
+//   ctx.fillStyle = "white";
+//   ctx.fill();
+
+//   ctx.lineWidth = 10;
+// }
 function initScreen() {
   widthLast = window.innerWidth;
   heightLast = window.innerHeight;
@@ -39,24 +65,22 @@ function initScreen() {
   canvasOffsetX = canvas.offsetLeft;
   canvasOffsetY = canvas.offsetTop;
 
-  canvas.width = (window.innerWidth - canvasOffsetX) * ratioRes;
-  canvas.height = (window.innerHeight - canvasOffsetY) * ratioRes;
+  const newWidth = (window.innerWidth - canvasOffsetX) * ratioRes;
+  const newHeight = canvas.height + 300 ;
 
-  if (canvas.width < canvas.height) {
-    canvas.height = canvas.width;
-  } else {
-    canvas.width = canvas.height;
-  }
+  canvas.width = newWidth;
+  canvas.height = newHeight;
 
-  canvas.style.width = "" + canvas.width / ratioRes + "px";
-  canvas.style.height = "" + canvas.height / ratioRes + "px";
-
+ 
   ctx.beginPath();
   ctx.rect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = "white";
   ctx.fill();
 
   ctx.lineWidth = 10;
+
+  canvas.style.width = "" + newWidth / ratioRes + "px";
+  canvas.style.height = "" + newHeight / ratioRes + "px";
 }
 
 // ====================================

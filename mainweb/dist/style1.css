@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin: 0px;
     padding: 0px;
     -webkit-touch-callout: none; /* Safari */
@@ -147,24 +148,40 @@
   
 }
 
-
+.drawName{
+  display: flex;
+  z-index: 3;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  top:25vh;
+}
+#drawtext{
+  width: 80%;
+  text-align: center;
+  font-size: 2vh;
+  padding: 8px; 
+  border-radius : 20px; 
+  border: none;
+}
+#summitme3{
+  display: none;
+}
 
 
 /* --------------------------------------------------------------------------------------------------------------------- */
 
-
-
-
-
   .tools-container {
     position: absolute;
-    bottom: 20%;
+    bottom: 16%;
     height: 100px;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 3;
+   
+    
   }
   
   @media only screen and (orientation: landscape) {
@@ -180,7 +197,7 @@
  
   .tools-content {
     height: 60%;
-    width: 70%;
+    width: 82%;
     /* border: 1px solid; */
     display: flex;
     justify-content: space-evenly;
@@ -240,36 +257,22 @@
     justify-content: center;
     align-items: center;
     width: 100vw;
-    height: 90vh; 
+    height: 95vh;
+     
    
   
   }
   
   #canvas {
-    top: 30%;
+    width: 82%;
     z-index: 2; 
     border : 1px solid white;
     border-radius: 10px;
-    padding: 20px ;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    padding: 30px ;
+    
+    /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); */
   }
-  .drawName{
-    display: flex;
-    z-index: 3;
-    justify-content: center;
-    position: absolute;
-    width: 100%;
-    top:25vh;
-  }
-  #drawtext{
-    text-align: center;
-    font-size: large;
-    padding: 15px; 
-    width:45% ;
-    border: none;
-    border-radius : 30px; 
-    box-shadow: 0px -3px 5px rgba(0, 0, 0, 0.3);
-  }
+  
 
   
   .active-tool {
@@ -437,31 +440,118 @@
     height: 100%;
     background: #111111;
   }
-   /* ----------------------------------------------------popup คำหยาบ-------------------------------------------------------- */
+
+  /* ----------------------------------------------------popup ------------------------------------------------------- */
  
-
-  /* ----------------------------------------------------popup ไม่กรอกข้อมูล-------------------------------------------------------- */
-  
-   
-  
-  
   .popup-container {
-    z-index: 1000;
-    width: 80%;
-    position: fixed;
-    left: 50%;
-    transform: translate(-50%);
-    display: none;
     width: 340px;
-    padding: 1em;
-    color: black;
-    background: #fff ;
+    z-index: 10;
+    position: fixed;
+    color: #11097f;
+    width: 100%;
+    height: 50vh;
+    display: none;
+    justify-content: center; 
+    align-items: center; 
+    background-image: url(picture/sun.png);
+    background-size: 90vw; 
+    background-repeat: no-repeat; 
+    background-position: center top;
+    /* animation: showPopup 0.1s ease-in-out forwards; */
   }
-  
-  .popup-confirm-button {
-    z-index: 10001; /* กำหนด z-index ให้สูงกว่า Popup container */
-    background-color: #ffc800d0;
+ /* ----------------------------------------------------popup ไม่กรอกข้อมูล-------------------------------------------------------- */
+
+  .popup{
+    font-size: medium;
+  }
+  #popup-confirm-button {
+    background-color: rgb(62, 62, 107);
+    color: #fff;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    
+  }
+  .error-Container{
+    margin-top: 8%;
+  }
+  #popup p{
+    margin: 0px 15px 15px;
+
+  }
+  #popup h3{
+    color: #090a4e;
+  }
+   /* ----------------------------------------------------popup คำหยาบ-------------------------------------------------------- */
+   
+   .error{
+    font-size: medium;
+  }
+  #popup-Gotit-button{
+    background-color: rgb(208, 99, 21);
+    color: #fff;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+  }
+  #error h3 {
+    color: #e70808;
+  }
+  #error p{
+    color: #903232;
+    margin-bottom: 5%;
+
   }
 
+   /* ----------------------------------------------------หน้า index1-------------------------------------------------------- */
+  
+   .send3{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: auto; 
+    bottom: 10%; 
+    z-index: 2; 
+  }
+
+  #summitme3{
+    background-color: transparent;
+    border: none;
+    width: 20%;
+    height: 4%; ;
+   
+    
+  }
+  #summitme3 img {
+    width: 100%;
+    height: 100%;
+   
+  }
+
+  .success img{
+    width: 100%;
+    height: 100%;
+    
+  }
+  .success-container #picsuc{
+    display:flex;
+    text-align: center;
+    align-items: center; 
+    width: 50%;
+  }
+ 
+  
+  .success-container {
+    display: flex;
+    justify-content: center; /* จัดให้ตรงกลางแนวนอน */
+    align-items: center; /* จัดให้ตรงกลางแนวตั้ง */
+    width: 100%;
+    height: 100vh; /* ใช้ความสูงเต็มหน้าจอ */
+  }
+  
+  #picsuc {
+    width: 50%; /* กำหนดขนาดเท่ากับครึ่งหนึ่งของหน้าจอ */
+  }
 
 
