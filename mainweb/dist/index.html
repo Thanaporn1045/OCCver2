@@ -255,11 +255,16 @@
     <div class="send2">
         <button id="summitme2">
           <img id="send" src="./picture/send.png" alt="Submit"/>
-        </button>
-        <div class="send2">
-          <button id="summitme3">/></button>
-        </div>
-      </div>
+        </button> 
+    </div>
+
+    <div class="send5">
+      <button id="summitme5">
+        <img src="./picture/logo.png" alt="Submit"/>
+      </button> 
+    </div>
+
+
      <div class="mountain">
       <img src="./picture/mountain2.png" alt="" /></div>
     </div>
@@ -285,7 +290,8 @@
     <script>
       let t = new Date().getTime();
 
-      document.querySelector("#send").addEventListener("click", (e) => {
+      document.getElementById('summitme2').addEventListener("click", (e) => {
+        document.getElementById('summitme5').click();
         sendState = true;
         t = new Date().getTime();
         let send = document.querySelector("#eraser");

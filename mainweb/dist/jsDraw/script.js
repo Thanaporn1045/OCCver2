@@ -10,7 +10,12 @@ let canvasOffsetY = canvas.offsetTop;
 let widthLast = window.innerWidth;
 let heightLast = window.innerHeight;
 
-initScreen();
+// initScreen();
+
+document.addEventListener("DOMContentLoaded", function() {
+  initScreen();
+});
+
 
 window.addEventListener("resize", function () {
   canvas.width = window.innerWidth;

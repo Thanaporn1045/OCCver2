@@ -115,3 +115,48 @@ const db = getFirestore();
         addMessage(mymsg,myname);
     }}
     document.getElementById('popup-confirm-button').onclick = function(){document.getElementById('popup').style.display = 'none';}
+
+
+
+    async function adddrawname(drawname) {
+      const datenow = Date.now();
+      try {
+        // const docRef = await addDoc(collection(db, "Drawpage", datenow + ''), { name: "myname", timestamp: datenow });
+        const setdoc = await setDoc(doc(db, "DrawName", datenow + ''), { name: drawname, timestamp: datenow})
+          .then(() => {
+            console.log("Successful")
+            // window.location.href = "index1.html"
+          });
+      } catch (e) {
+        console.error("Error adding document: ", e)
+      }
+    }
+    
+    // document.getElementById('summitme5').onclick = function () {
+    //   const drawname = document.getElementById('drawtext').value;
+    //   console.log(drawname);
+    //   if ( drawname== '' || drawname.trim() == '' || drawname == null || drawname == undefined ) {
+    //     Swal.fire({
+    //       icon: 'info',
+    //         title: 'Ah..!',
+    //         html: document.getElementById('popup').innerHTML,
+    //         confirmButtonClass: 'popup-confirm-button',
+    //         confirmButtonText: 'OK',
+    //     })
+    //   } else {
+    //     adddrawname(drawname);
+    //   }
+    // }
+
+    document.getElementById('summitme5').onclick = function () {
+      
+      const drawname = document.getElementById('drawtext').value;
+      // alert(drawname);
+      adddrawname(drawname);
+    }
+
+    // document.getElementById('summitme5').addEventListener("click", (e) => {
+    //   const drawname = document.getElementById('drawtext').value;
+    //   // alert(drawname);
+    //   adddrawname(drawname);
+    // });
