@@ -182,22 +182,34 @@
 
   .tools-container {
     position: absolute;
-    bottom: 16%;
+    /* bottom: 28%;   */
+    margin-top: 50vh;
     height: 100px;
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 3;
+  }
+  .allcanvas {
+    /* position: absolute; */
+    /* bottom: 28%;   */
+    /* margin-top: 50vh; */
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
    
     
   }
   
   @media only screen and (orientation: landscape) {
-    .tools-container {
+    /* .tools-container {
       height: 15vh;
       z-index: 3;
-    }
+    } */
   }
   
    /* img {
@@ -217,11 +229,11 @@
     /* bottom: -20%; */
   }
   
-  @media only screen and (orientation: landscape) {
+  /* @media only screen and (orientation: landscape) {
     .tools-content {
       width: 40%;
     }
-  }
+  } */
   
   .duration-1 {
     transition-duration: 0.5s;
@@ -263,23 +275,30 @@
   
   .drawing-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 95vh;
-     
-   
-  
+     justify-content: center;
+    align-items: center; 
+     /* width: 100vh;    */
+    height: 95vh; 
+    margin-left: auto; 
+    margin-right:auto; 
   }
   
   #canvas {
-    width: 82%;
+    width: 82%; 
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-top: 10vh;
     z-index: 2; 
-    border : 1px solid white;
+    /* display: flex; */
+     /* height: 100%; */
+    /* border : 1px solid white;
     border-radius: 10px;
-    padding: 30px ;
+    padding: 30px ; */
     
-    /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); */
+     /* box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);  */
+     
+    /* border: 1px solid; */
+    
   }
   
 

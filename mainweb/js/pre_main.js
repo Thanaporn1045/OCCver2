@@ -121,6 +121,7 @@ const db = getFirestore();
     async function adddrawname(drawname) {
       const datenow = Date.now();
       try {
+        alert(drawname);
         // const docRef = await addDoc(collection(db, "Drawpage", datenow + ''), { name: "myname", timestamp: datenow });
         const setdoc = await setDoc(doc(db, "DrawName", datenow + ''), { name: drawname, timestamp: datenow})
           .then(() => {
@@ -148,15 +149,15 @@ const db = getFirestore();
     //   }
     // }
 
-    document.getElementById('summitme5').onclick = function () {
+    // document.getElementById('summitme2').onclick = function () {
       
-      const drawname = document.getElementById('drawtext').value;
-      // alert(drawname);
-      adddrawname(drawname);
-    }
-
-    // document.getElementById('summitme5').addEventListener("click", (e) => {
     //   const drawname = document.getElementById('drawtext').value;
-    //   // alert(drawname);
+    //   alert(drawname);
     //   adddrawname(drawname);
-    // });
+    // }
+
+
+    document.getElementById('summitme2').addEventListener("click", (e) => {
+      const drawname = document.getElementById('drawtext').value;
+      adddrawname(drawname);
+    });

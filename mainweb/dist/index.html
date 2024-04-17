@@ -159,8 +159,8 @@
   <br>
   </div>
     <div class="drawing-container">
-      
-      <canvas id="canvas" ></canvas>
+      <div class="allcanvas">
+      <canvas id="canvas" ></canvas></div>
       <div class="tools-container">
         <div class="tools-content">
           <div class="tool active-tool" id="pen">
@@ -291,7 +291,7 @@
       let t = new Date().getTime();
 
       document.getElementById('summitme2').addEventListener("click", (e) => {
-        document.getElementById('summitme5').click();
+        // document.getElementById('summitme5').click();
         sendState = true;
         t = new Date().getTime();
         let send = document.querySelector("#eraser");
@@ -328,6 +328,17 @@
         { passive: false }
       );
     </script>
+
+
+<!-- ทำ ความกว้างเครื่องมือให้เท่ากับ canvas -->
+<!-- <script>
+  // หา Element ของ canvas และ tools-container ด้วย ID
+  var canvas = document.getElementById('canvas');
+  var toolsContainer = document.querySelector('.tools-content');
+  var canvasWidth = canvas.offsetWidth;
+  toolsContainer.style.width = canvasWidth + '%';
+  
+</script> -->
 
   </body>
 </html>
