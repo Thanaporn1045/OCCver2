@@ -26,7 +26,7 @@
     <title>OCC</title>
     <link rel="stylesheet" href="style1.css" />
     <script src="jsDraw/html2canvas.js"></script>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- อัพภาพ -->
     <script>
       let sendState = false;
       const firebaseConfig = {
@@ -82,17 +82,11 @@
   <body>
     <!-- test -->
    
-    <div class="logo"><img src="picture/logo.png"></div> 
-    <div id="main"> 
-
-      <div id="menubar">
-        <img id="Texticon" src="act/Tact.png" onclick="TextPage()">
-        <img id="Drawicon" src="non/D.png" onclick="DrawPage()">
-      </div>
-    </div>
+    <!-- <div class="logo"><img src="picture/logo.png"></div>  -->
+    
 
 
-<!----------------------------------------------------------------------- popup ข้อมูลว่าง---------------------------------------------------------------->
+<!----- popup ข้อมูลว่าง------>
   
     <div id="popup" class="popup-container" >
       <div class="error-Container">
@@ -105,7 +99,7 @@
     </div>
 
 
-<!----------------------------------------------------------------------- popup คำหยาบ--------------------------------------------------------------->
+<!---- popup คำหยาบ------>
 
     <div id="error" class="popup-container" >
       <div class="error-Container">
@@ -118,25 +112,19 @@
     </div>
   
 
-<!----------------------------------------------------------------------- Text Zone ---------------------------------------------------------------->
-    <div class="Text_Zone"> 
+<!-- Page 1 -->
+<div class="page1"> 
       <div class="Text_Container">
       <section id="textinput">
-        <!-- <p>Name</p> -->
           <input 
             id="nametext" type="text" class="css-input" placeholder="Name?" maxlength="50"
           ><br>
-          <br>
-        <!-- <p>Text</p> -->
-          <input
-            id="humantext" type="text" class="css-input" placeholder="Input Your Text Here!" maxlength="200"
-          />
       </section>
       </div> 
-      <div class="send">
-        <button id="summitme">
-          <img  src="./picture/send.png" alt="Submit">
-        </button>
+      <div class="next">
+      <button onclick="showPage2()" id="next">
+        <img  src="./IconMenubar/next.png" alt="next-icon">
+      </button>
       </div> 
       <div class="mountain">
         <img  src="./picture/mountain2.png" alt="" />
@@ -144,20 +132,66 @@
   </div>
   
 
- 
+ <!-- Page 2 -->
+<div class="page2" >
+  <div id="menubar">
+    <img id="Texticon" src="IconMenubar/non/text1.png" onclick="TextPage()">
+    <img id="Drawicon" src="IconMenubar/non/brush1.png" onclick="DrawPage()">
+    <img id="Picicon" src="IconMenubar/non/pic1.png" onclick="PicPage()">
+    <img id="Stickicon" src="IconMenubar/non/stick1.png" onclick="StickPage()">
+  </div>
+  <div id="showName"></div>
+  <div id="showAll">
+    <div id="showtext" onmousedown="startDrag(event)" onclick="editText()" ></div>
+  </div>
+   <div class="BGbar">
+    <div class="row1">
+      <img id="BG1" src="IconMenubar/BGbox.png" onclick="">
+      <img id="BG2" src="IconMenubar/BGbox.png" onclick="">
+      <img id="BG3" src="IconMenubar/BGbox.png" onclick="">
+      <img id="BG4" src="IconMenubar/BGbox.png" onclick="">
+      <img id="BG5" src="IconMenubar/BGbox.png" onclick="">
+    </div>
+    <div class="row2">
+      <img id="BG6" src="IconMenubar/BGbox.png" onclick="">
+      <img id="BG7" src="IconMenubar/BGbox.png" onclick="">
+      <img id="BG8" src="IconMenubar/BGbox.png" onclick="">
+      <img id="BG9" src="IconMenubar/BGbox.png" onclick="">
+    </div>
+  </div>
+  
+</div>
 
-<!----------------------------------------------------------------------- Draw Zone ---------------------------------------------------------------->
-<div class="Draw_Zone">
+ <!-- Text Page  -->
+<div class="textpage">
+  <div class="input_Container">
+    <div class="input_text">
+      <input id="text_input" type="text" class="css-input" placeholder=" input your text..." maxlength="50" oninput="checkInput()">
+    </div>
+    <div class="up_text">
+      <img src="IconMenubar/down.png" class="btn" onclick="displayText(),toolEditText()"  alt="Submit">
+    </div>
+  </div>
+  <div class="editText">
+    <div class="slide">
+      <img src="" onclick="resizeText()">
+      <input type="range" id="fontSlider" min="10" max="20" value="16" step="1" onchange="resizeText()">
+      <span id="fontSizeValue">16px</span>
+    </div>
+    <img src="path_to_font_image.png" onclick=" showFontSelectorOnce()">
+    <img src="path_to_color_image.png" onclick="showColorPicker()">
+    <img src="path_to_rotate_image.png" onclick="rotateText()">
+  </div>
+</div>
+<!---- Draw Page ---->
+<div class="drawpage">
 
     <a id="testText1" style="position: absolute; top: 0; display: none">x,y</a>
     <a id="testText2" style="position: absolute; top: 20px; display: none">x,y</a>
     <a id="testText3" style="position: absolute; top: 50px; display: none">x,y</a>
 
     <a id="link"></a>
-  <div class="drawName">
-    <input id="drawtext" type="text" class="css-input" placeholder=" Name?" maxlength="50">
-  <br>
-  </div>
+  
     <div class="drawing-container">
       <div class="allcanvas">
       <canvas id="canvas" ></canvas></div>
@@ -206,51 +240,7 @@
       </div>
     </div>
     <div class="container">
-    <!-- <div class="tools-container">
-      <div class="tools-content">
-        <div class="tool active-tool" id="pen">
-          <img src="./NewIcons/pen-clip-svgrepo-com.svg" alt="" />
-          <div class="tool-options hide">
-            <div class="pen-size">
-              <input type="range" id="pensize" value="10" min="5" max="40" />
-            </div>
-            <div class="pen-colors">
-              <div class="black"></div>
-              <div class="purple"></div>
-              <div class="blue"></div>
-              <div class="green"></div>
-              <div class="red"></div>
-            </div>
-          </div>
-        </div>
-        <div class="tool fade" id="eraser">
-          <img src="./NewIcons/eraser-svgrepo-com.svg" alt="" />
-          <div class="tool-options2 hide">
-            <div class="eraser-size">
-              <input
-                type="range"
-                id="erasersize"
-                value="25"
-                min="10"
-                max="40"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="tool fade tap" id="clear">
-          <img src="./NewIcons/bin-delete-recycle-svgrepo-com.svg" alt="" />
-        </div>
-        <div class="tool" id="undo">
-          <img src="./NewIcons/undo-left-round-svgrepo-com.svg" alt="" />
-        </div>
-        <div class="tool" id="redo">
-          <img src="./NewIcons/undo-right-round-svgrepo-com.svg" alt="" />
-        </div>
-      
-      
-      </div> 
-    </div> -->
-
+<!------ send ------->
 
     <div class="send2">
         <button id="summitme2">
@@ -273,19 +263,270 @@
     <!-- <button class="summitme3" id="summitme3">send</button>  -->
 </div>
 
+<!-----Pic Page อัพภาพ------>
+
+<div class="picpage">
+   <h1>Upload Image</h1>
+  <input type="file" id="imageUpload" accept="image/*">
+  <button id="uploadButton">Upload</button> 
+
+</div>
+
+<!-----Sticker Page อัพภาพ------>
+<div class="stickpage">
+  <h2>Select a Sticker:</h2>
+  <img class="sticker-img" src="sticker1.png" alt="Sticker 1" onclick="sendSticker('sticker1.png')">
+  <img class="sticker-img" src="sticker2.png" alt="Sticker 2" onclick="sendSticker('sticker2.png')">
+  <img class="sticker-img" src="sticker3.png" alt="Sticker 3" onclick="sendSticker('sticker3.png')">
+  <!-- เพิ่มรูปภาพสติกเกอร์เพิ่มเติมตามต้องการ -->
+</div>
+
+
 <script>document.getElementById('summitme2').addEventListener('click', function() {
   document.getElementById('summitme3').click(); });</script>
 
 
-<!----------------------------------------------------------------------- script---------------------------------------------------------------->
+
+<!-------stript เปิดปิด page ตาม icon -->
+<script>
+  function resetIcons() {
+      var Tbotton = document.getElementById("Texticon");
+      var Dbotton = document.getElementById("Drawicon");
+      var Pbotton = document.getElementById("Picicon");
+      var Sbotton = document.getElementById("Stickicon");
+  
+      Tbotton.src = "IconMenubar/non/text1.png";
+      Dbotton.src = "IconMenubar/non/brush1.png";
+      Pbotton.src = "IconMenubar/non/pic1.png";
+      Sbotton.src = "IconMenubar/non/stick1.png";
+  }
+
+  // text
+  function TextPage() {
+    resetIcons();
+    var Tbotton = document.getElementById("Texticon");
+      Tbotton.src = "IconMenubar/act/text2.png";
+      document.querySelector(".textpage").style.display = "block";
+      document.querySelector(".textpage .editText").style.display = "none";
+      document.querySelector(".drawpage").style.display = "none";
+      document.querySelector(".picpage").style.display = "none";
+      document.querySelector(".stickpage").style.display = "none"; 
+      checkInput()
+  }
+  function checkInput() {
+    var inputField = document.getElementById("text_input");
+    var submitButton = document.querySelector(".up_text img");
+    if (inputField.value.trim() === "") {
+        submitButton.style.display = "none";
+    } else {
+        submitButton.style.display = "block";
+    }
+   
+  }
+  function displayText() {
+      var inputText = document.getElementById("text_input").value;
+      var showAllDiv = document.getElementById("showtext");
+      showAllDiv.innerText = inputText;
+
+     var showInputbox = document.querySelector(".input_Container");
+     showInputbox.style.display = "none"
+
+  }
+
+  function editText() {
+  var textDiv = document.getElementById("showtext");
+  var inputElement = document.createElement("input");
+  inputElement.type = "text";
+  inputElement.value = textDiv.innerText.trim(); // ใส่ข้อความปัจจุบันลงใน input
+  inputElement.onblur = function() { // เมื่อ input ถูก blur
+    textDiv.innerText = this.value; // แสดงข้อความใหม่ที่ผู้ใช้แก้ไข
+  };
+
+  // เปลี่ยนข้อความเป็น input
+  textDiv.innerHTML = '';
+  textDiv.appendChild(inputElement);
+
+  // focus ที่ input เพื่อให้ผู้ใช้สามารถแก้ไขได้ทันที
+  inputElement.focus();
+
+}
+function toolEditText(){
+  var editTextDiv = document.querySelector(".editText");
+  if (editTextDiv.style.display === "none") {
+        editTextDiv.style.display = "block";
+    } else {
+        editTextDiv.style.display = "none";
+    }
+}
+
+function resizeText() {
+    var newSize = document.getElementById("fontSlider").value;
+    document.getElementById("showtext").style.fontSize = newSize + "px";
+    document.getElementById("fontSizeValue").innerText = newSize + "px";
+  }
+
+function showColorPicker() {
+    var colorPicker = document.createElement("input");
+    colorPicker.type = "color";
+    colorPicker.onchange = function() {
+        changeColor(this.value);
+    };
+    colorPicker.click(); // เรียกใช้งานพาเลทสี
+}
+
+function changeColor(newColor) {
+  var showText = document.getElementById("showtext");
+  showText.style.color = newColor;
+}
+
+function rotateText() {
+  var deg = prompt("Enter degree to rotate:");
+  showAllDiv.style.transform = "rotate(" + deg + "deg)";
+}
+
+// font
+var fontSelectorShown = false; // เพิ่มตัวแปรเพื่อตรวจสอบว่าเมนูฟอนต์ได้แสดงขึ้นมาแล้วหรือยัง
+
+
+function showFontSelectorOnce() {
+    if (!fontSelectorShown) { // ตรวจสอบว่าเมนูฟอนต์ยังไม่ถูกแสดงขึ้นมา
+        showFontSelector(); // เรียกใช้งาน showFontSelector()
+        fontSelectorShown = true; // กำหนดค่าเป็น true เพื่อระบุว่าเมนูฟอนต์ได้ถูกแสดงขึ้นมาแล้ว
+    } else {
+        hideFontSelector(); // ซ่อนเมนูฟอนต์เมื่อถูกเรียกใช้งานซ้ำ
+        fontSelectorShown = false; // กำหนดค่าเป็น false เพื่อระบุว่าเมนูฟอนต์ยังไม่ถูกแสดงขึ้นมา
+        showFontSelector(); // เรียกใช้งาน showFontSelector() อีกครั้ง
+        fontSelectorShown = true; // กำหนดค่าเป็น true เพื่อระบุว่าเมนูฟอนต์ได้ถูกแสดงขึ้นมาแล้ว
+    }
+}
+function showFontSelector() {
+  var fontSelector = document.createElement("select");
+    var fontOptions = ["Arial", "Verdana", "Tahoma", "Times New Roman", "Courier New"];
+    fontOptions.forEach(function(font) {
+        var option = document.createElement("option");
+        option.text = font;
+        option.value = font;
+        fontSelector.appendChild(option);
+    });
+    
+    fontSelector.onchange = function() {
+        changeFont(this.value);
+    };
+    
+    fontSelector.style.display = "block"; // ซ่อนองค์ประกอบ select ไว้ก่อน
+    document.body.appendChild(fontSelector); // เพิ่ม select เข้าไปใน body
+    fontSelector.click(); // เรียกใช้งานการเปลี่ยนฟอนต์
+}
+
+function changeFont(newFont) {
+    var showText = document.getElementById("showtext");
+    showText.style.fontFamily = newFont;
+    hideFontSelector();
+}
+
+function hideFontSelector() {
+    var fontSelector = document.querySelector("select");
+    fontSelector.style.display = "none"; // ซ่อนเมนูฟอนต์
+    
+} 
+
+
+
+
+  // draw
+  function DrawPage() {
+      resetIcons();
+      var Dbotton = document.getElementById("Drawicon");
+      Dbotton.src = "IconMenubar/act/brush2.png";
+      document.querySelector(".textpage").style.display = "none";
+      document.querySelector(".drawpage").style.display = "block";
+      document.querySelector(".picpage").style.display = "none";
+      document.querySelector(".stickpage").style.display = "none";
+     
+      // เพิ่มโค้ดเพื่อแสดงหน้า DrawPage()
+  }
+  
+  function PicPage() {
+      resetIcons();
+      var Pbotton = document.getElementById("Picicon");
+      Pbotton.src = "IconMenubar/act/pic2.png";
+      document.querySelector(".textpage").style.display = "none";
+      document.querySelector(".drawpage").style.display = "none";
+      document.querySelector(".picpage").style.display = "block";
+      document.querySelector(".stickpage").style.display = "none";
+      // เพิ่มโค้ดเพื่อแสดงหน้า PicPage()
+  }
+  
+  function StickPage() {
+      resetIcons();
+      var Sbotton = document.getElementById("Stickicon");
+      Sbotton.src = "IconMenubar/act/stick2.png";
+      document.querySelector(".textpage").style.display = "none";
+      document.querySelector(".drawpage").style.display = "none";
+      document.querySelector(".picpage").style.display = "none";
+      document.querySelector(".stickpage").style.display = "black";
+      // เพิ่มโค้ดเพื่อแสดงหน้า StickerPage()
+  }
+  
+  </script>
+<!-------stript ปรับ text -->
+<script>
+  let offsetX = 0;
+  let offsetY = 0;
+  let dragging = false;
+  let showAllDiv = document.getElementById("showtext");
+
+  function startDrag(e) {
+      dragging = true;
+      offsetX = e.clientX - parseFloat(window.getComputedStyle(showAllDiv).left);
+      offsetY = e.clientY - parseFloat(window.getComputedStyle(showAllDiv).top);
+      document.addEventListener("mousemove", drag);
+      document.addEventListener("mouseup", stopDrag);
+  }
+
+  function stopDrag() {
+      dragging = false;
+      document.removeEventListener("mousemove", drag);
+      document.removeEventListener("mouseup", stopDrag);
+  }
+
+  function drag(e) {
+      if (dragging) {
+          showAllDiv.style.left = e.clientX - offsetX + "px";
+          showAllDiv.style.top = e.clientY - offsetY + "px";
+      }
+  }
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<!------- script--------->
 
     <script src="jsDraw/script.js"></script>
     <script src="jsDraw/Tool.js"></script>
     <!-- <script src="./js/sticky.js"></script>
     <script src="./js/img.js"></script> -->
     <script src="jsDraw/drawingTool.js"></script>
-    <script src="main.js?v=4"></script>
-    <script src="ScriptTD.js"></script>
+    <!-- <script src="main.js?v=4"></script> -->
+    <!-- <script src="ScriptTD.js"></script> -->
+    <script type="module" src="ScriptTD.js"></script>
 
     <script>
       let t = new Date().getTime();

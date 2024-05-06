@@ -24,6 +24,10 @@
   
 
 /* -----------------------------------------------------------------------Text page---------------------------------------------------- */
+.page2 ,.textpage ,.drawpage,.picpage , .stickpage  {
+  display: none;
+}
+
 .mountain {
   display: flex;
   justify-content: center;
@@ -46,13 +50,21 @@
   height: auto;
   z-index: 1; 
 }
+#logo {
+  position: fixed;
+  /* top: 15%; */
+  left: 0;
+  width: 80%;
+  /* transform: translateY(-10%); */
+}
+
 .logo img {
   max-width: 100%;
   height: auto;
   display: block;
 }
-#Texticon, #Drawicon {
-  width: 15%; 
+#Texticon, #Drawicon , #Picicon ,#Stickicon {
+  width: 18%; 
   padding: 2%;
 }
 
@@ -64,14 +76,38 @@
   transform: translateY(-15%);
   z-index: 4;
 }
-
-#logo {
+#showName {
+  color: #fff;
   position: fixed;
-  /* top: 15%; */
+  top: 25%;
   left: 0;
-  width: 80%;
-  /* transform: translateY(-10%); */
+  width: 100%;
+  transform: translateY(-15%);
+  z-index: 4;
 }
+
+#showAll {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  background-color: #fff;
+  text-align: center;
+  border-radius: 20px; 
+  width: 80%;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+ #showtext {
+  border: 1px solid black;
+  padding: 10px;
+  position: absolute;
+  cursor: move;
+  z-index: 10;
+ }
 
 .Text_Container {
   z-index: 2;
@@ -82,7 +118,7 @@
   transform: translate(-50%, -50%);
 }
 #nametext {
-  width: 80%;
+  width: 70%;
   text-align: center;
   font-size: 2vh;
   padding: 8px; 
@@ -96,10 +132,53 @@
   border-radius : 20px; 
   border: none;
   width: 80%;
-  height: 40vh;
+  z-index: 10;
+ 
+}
+.next{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 100%; 
+  height: auto; 
+  bottom: 35%; 
+  z-index: 5;
+}
+#next{
+  background-color: transparent;
+  border: none;
+  width: 20%;
+  height: 4%; ;
+}
+#next img {
+  width: 100%;
+  height: 100%;
 }
 
+.BGbar {
+  position: fixed;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  z-index: 3;
+  
+}
 
+.row1, .row2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.BGbar img {
+  width: 12vw; 
+  height: auto; 
+  margin: 1vw; 
+}
 .send {
   display: flex;
   justify-content: center;
@@ -142,33 +221,21 @@
   height: 100%;
 }
 
-/* #summitme4{
-  background-color: transparent;
-  border: none;
-  width: 20%;
-  height: 4%; ;
-  
-}
-#summitme4 img {
-  width: 100%;
-  height: 100%;
-} */
 
 
-.Draw_Zone{
-   display: none; 
-  
-}
 
-.drawName{
+
+
+.input_text{
   display: flex;
   z-index: 3;
   justify-content: center;
   position: absolute;
   width: 100%;
-  top:25vh;
+  top:24vh;
+  z-index: 5;
 }
-#drawtext{
+#text_input{
   width: 80%;
   text-align: center;
   font-size: 2vh;
@@ -177,6 +244,58 @@
   border: none;
 }
 
+.up_text {
+  display: flex;
+  justify-content: flex-end; 
+  position: fixed; 
+  width: calc(100% - 10px); 
+  top: 24vh;
+  z-index: 5;
+  /* margin-right: 10px;  */
+  /* right: 0;  */
+}
+
+.btn {
+  width: 30px; 
+  height: 30px; 
+  border: none;
+  cursor: pointer;
+  margin-right: 7%; 
+  z-index: 7;
+}
+.editText{
+   left: 0px;
+   z-index: 8;
+}
+/* size */
+
+#fontSlider {
+  width: 30vh;
+  height: auto; /* กำหนดความสูงให้เป็นแนวตั้ง */
+  position: fixed; /* ตั้งค่าตำแหน่ง */
+  left: 5%; /* ชี้ไปที่ขอบซ้ายของหน้าจอ */
+  top: 75%; /* จัดให้อยู่ตรงกลางตามแนวตั้ง */
+  transform: rotate(270deg) translate(-50%, -50%);
+  transform-origin: left top; /* ตั้งตำแหน่งหมุนเริ่มต้นที่มุมบนซ้าย */
+  margin-top: -25vh; /* ปรับขนาดสไลด์ให้อยู่ตรงกลางแนวตั้ง */
+  z-index: 8;
+}
+
+#fontSizeValue {
+  display: none;
+  /* margin-bottom: 10px; */
+}
+
+#showtext {
+  cursor: pointer;
+  border: 2px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+#showtext:hover {
+  background-color: #f0f0f0;
+}
 
 /* --------------------------------------------------------------------------------------------------------------------- */
 
@@ -189,7 +308,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 3;
+    z-index: 5;
   }
   .allcanvas {
     /* position: absolute; */
@@ -200,7 +319,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2;
+    z-index: 4;
    
     
   }
@@ -424,6 +543,7 @@
     margin-right: auto;
     margin-top: 5vh;
     width: 16vh;
+    z-index: 4;
   }
   /* 
   @media only screen and (max-width: 600px) {
